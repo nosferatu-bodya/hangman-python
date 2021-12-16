@@ -10,11 +10,17 @@ word = ""
 
 tprint("Hangman")
 
-command = input("type 'y' if you want the computer to pick a random word, and 'n' if you want a real player to write the word: ")
-if command == "y":
-    word = words.words['data'][random.randint(0, len(words.words["data"])-1)]
-elif command == "n":
-    word = getpass.getpass("Player2 must write a secret word: ")
+while True:
+    command = input(
+        "type 'y' if you want the computer to pick a random word, and 'n' if you want a real player to write the word: ")
+    if command == "y":
+        word = words.words['data'][random.randint(0, len(words.words["data"]) - 1)]
+        break
+    elif command == "n":
+        word = getpass.getpass("Player2 must write a secret word: ")
+        break
+    else:
+        print("wrong command")
 
 
 guessing = [' _ '] * len(word)
@@ -60,6 +66,7 @@ while True:
                     break
                 else:
                     if cur_multiple_letter_index == (len(indexes_of_all_duplicates_of_this_letter)-1):
+                        mistakes += 1
                         break
                     cur_multiple_letter_index += 1
 
