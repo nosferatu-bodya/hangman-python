@@ -30,11 +30,35 @@ def show_guessing(guessing):
 show_gallow(mistakes)
 
 while True:
-    letter = input("\nenter a letter: ")
+    while True:
+        letter = input("\nenter a letter: ")
+        if len(letter) == 1:
+            break
+        else:
+            print("It's gotta be just one letter")
+        
     if letter in word:
-        win_score -= 1
         index = word.index(letter)
-        guessing[index] = f" {letter} "
+        cur_multiple_letter_index = 0
+        if guessing[index] == " _ ":
+            win_score -= 1
+            guessing[index] = f" {letter} "
+        else:
+            indexes_of_all_duplicates_of_this_letter = []
+            for i in range(len(word)):
+                if(word[i] == letter):
+                    indexes_of_all_duplicates_of_this_letter.append(i)
+            
+            while True:
+                if guessing[indexes_of_all_duplicates_of_this_letter[cur_multiple_letter_index]] == " _ ":
+                    guessing[indexes_of_all_duplicates_of_this_letter[cur_multiple_letter_index]] = f" {letter} "
+                    win_score -= 1
+                    break
+                else:
+                    if cur_multiple_letter_index == (len(indexes_of_all_duplicates_of_this_letter)-1):
+                        break
+                    cur_multiple_letter_index += 1
+
         show_gallow(mistakes)
     else:
         mistakes += 1
