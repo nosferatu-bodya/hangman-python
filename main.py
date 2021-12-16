@@ -2,10 +2,14 @@ import gallows
 import words
 import getpass
 import random
+from art import *
 
 mistakes = 0
 win_score = 0
 word = ""
+
+tprint("Hangman")
+
 command = input("type 'y' if you want the computer to pick a random word, and 'n' if you want a real player to write the word: ")
 if command == "y":
     word = words.words['data'][random.randint(0, len(words.words["data"])-1)]
