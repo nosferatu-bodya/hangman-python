@@ -7,3 +7,5 @@
     |           / \
     |
   _/\________
+
+<img src="/images/screenshot.png">
