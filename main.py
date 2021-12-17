@@ -82,3 +82,5 @@ while True:
         print("\nYou lost, motherfuckr")
         print(f"The word was: {word}")
         break
+
+input("Press enter to close the game: ")
